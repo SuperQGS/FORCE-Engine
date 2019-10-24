@@ -330,6 +330,9 @@
             var canvas = document.getElementById("example");
             var ctx = canvas.getContext("2d");
             
+            //!!!get tools varible
+            var tools_string = "<option>Place Tile To Grid</option><option>Fill Area With Tile</option><option>Select</option><option>Select Group</option><option>Place Tile To Pixel</option><option>Get Grid Coordinates</option><option>Get Pixel Coordinates</option><option>Delete</option><option>Delete Area</option><option>Get Tile Num</option>";
+            
             //000get selected tool
             canvas.addEventListener("click", function (evt) {
                 var tool = document.getElementById("tool").value;
@@ -481,11 +484,11 @@
                 
                 if (place_specific_type == "No Tile Selected" || place_specific_type == "") {
                     alert("No Tile Selected");
-                    document.getElementById("tool").innerHTML = "<option>Place Tile To Grid</option><option>Fill Area With Tile</option><option>Place Tile To Pixel</option><option>Get Grid Coordinates</option><option>Get Pixel Coordinates</option><option>Delete</option><option>Delete Area</option>";
+                    document.getElementById("tool").innerHTML = tools_string;
                     document.getElementById("tool").value = "Fill Area With Tile";
                 } else if (a_click_x > a_click2_x || a_click_y > a_click2_y) {
                     alert("Invalid use of tool. Please fill from top left to bottom right.");
-                    document.getElementById("tool").innerHTML = "<option>Place Tile To Grid</option><option>Fill Area With Tile</option><option>Place Tile To Pixel</option><option>Get Grid Coordinates</option><option>Get Pixel Coordinates</option><option>Delete</option><option>Delete Area</option>";
+                    document.getElementById("tool").innerHTML = tools_string;
                     document.getElementById("tool").value = "Fill Area With Tile";
                 } else {
                     var area_loop_x = 0;
@@ -502,7 +505,7 @@
                     }
                     //existing_tiles();
                     
-                    document.getElementById("tool").innerHTML = "<option>Place Tile To Grid</option><option>Fill Area With Tile</option><option>Place Tile To Pixel</option><option>Get Grid Coordinates</option><option>Get Pixel Coordinates</option><option>Delete</option><option>Delete Area</option>";
+                    document.getElementById("tool").innerHTML = tools_string;
                     document.getElementById("tool").value = "Fill Area With Tile";
                 }
             }
@@ -532,7 +535,7 @@
                 
                 if (d_click_x > d_click2_x || d_click_y > d_click2_y) {
                     alert("Invalid use of tool. Please fill from top left to bottom right.");
-                    document.getElementById("tool").innerHTML = "<option>Place Tile To Grid</option><option>Fill Area With Tile</option><option>Place Tile To Pixel</option><option>Get Grid Coordinates</option><option>Get Pixel Coordinates</option><option>Delete</option><option>Delete Area</option>";
+                    document.getElementById("tool").innerHTML = tools_string;
                     document.getElementById("tool").value = "Delete Area";
                 } else {
                     var area_loop_x = 0;
@@ -563,7 +566,7 @@
                         area_loop_x = 0;
                         area_loop_y = area_loop_y + 1;
                     }
-                    document.getElementById("tool").innerHTML = "<option>Place Tile To Grid</option><option>Fill Area With Tile</option><option>Place Tile To Pixel</option><option>Get Grid Coordinates</option><option>Get Pixel Coordinates</option><option>Delete</option><option>Delete Area</option>";
+                    document.getElementById("tool").innerHTML = tools_string;
                     document.getElementById("tool").value = "Delete Area";
                 }
                 var change_tile;
@@ -1117,7 +1120,8 @@
             //TODO:
             
             //CRUCIAL FEATURES
-            //***rework game engine
+            
+            //IMPORTANT BUGS
             
             //FEATURES
             //edit selected tile*(s) type, image, attributes
@@ -1126,9 +1130,6 @@
             //layer names
             //attribute value let be numerical
             //fill select
-            
-            //IMPORTANT BUGS
-            //fix fill tool and delete tool, they bug the select tool, could fix with universal "tool tags" variable
             
             //BUGS
             //fix deletearea
